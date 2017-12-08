@@ -1,4 +1,5 @@
 const request = require('request');
+const cheerio = require('cheerio');
 const express = require('express');
 const app = express();
 
@@ -9,7 +10,6 @@ app.get('/:distUrl', function(req, res){
     let url = req.path.replace(/^\//, '');
     url = decodeURIComponent(url);
     console.log(url);
-    const cheerio = require('cheerio');
     request(url, function (error, response, body) {
         if (error) console.log('error:', error);
         res.send(body);
